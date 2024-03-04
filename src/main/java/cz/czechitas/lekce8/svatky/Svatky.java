@@ -98,6 +98,7 @@ public class Svatky {
     public long zjistitPocetMuzskychSvatkuPrvniho() {
         //TODO
         return 0;
+    public long zjistitPocetMuzskychSvatkuPrvniho() {
     }
 
     /**
@@ -113,6 +114,7 @@ public class Svatky {
     public long zjistitPocetUnikatnichJmen() {
         //TODO
         return 0;
+    public long zjistitPocetUnikatnichJmen() {
     }
 
     /**
