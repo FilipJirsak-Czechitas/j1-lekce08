@@ -17,20 +17,10 @@ import java.util.stream.Stream;
 public class Svatky {
     private static final DateTimeFormatter MONTH_PARSER = DateTimeFormatter.ofPattern("d.M.");
 
-    private static Svatek parseLine(String line) {
-        String[] parts = line.split("\\s");
-        assert parts.length == 3;
-        return new Svatek(
-                MonthDay.parse(parts[0], MONTH_PARSER),
-                parts[1],
-                Gender.valueOf(parts[2].toUpperCase(Locale.ROOT))
-        );
-    }
-
     public Stream<Svatek> nacistSeznamSvatku() {
         try {
             Path path = Paths.get(Svatky.class.getResource("svatky.txt").toURI());
-            return Files.lines(path).map(Svatky::parseLine);
+            return Files.lines(path).map(Svatky::parsujRadek);
         } catch (URISyntaxException | IOException e) {
             throw new RuntimeException(e);
         }
@@ -144,4 +134,15 @@ public class Svatky {
         //TODO
         return null;
     }
+
+    private static Svatek parsujRadek(String line) {
+        String[] parts = line.split("\\s");
+        assert parts.length == 3;
+        return new Svatek(
+                MonthDay.parse(parts[0], MONTH_PARSER),
+                parts[1],
+                Gender.valueOf(parts[2].toUpperCase(Locale.ROOT))
+        );
+    }
+
 }
